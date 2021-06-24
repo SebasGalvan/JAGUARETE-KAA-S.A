@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table>
+     
+
+       {% for producto in lista_productos %}
+            <tr>
+                <td>{{producto.id}}</td>
+                <td>{{producto.titulo}}</td>
+                <td>{{producto.descripcion}}</td>
+                <td><img src="../../media/{{producto.imagen}}" width="200px" height="200px"></td>
+                <td>{{producto.precio}}</td>
+                <td>{{producto.stock}}</td>
+                <td>{{producto.categoria}}</td>
+            </tr>
+        {% endfor %}
+            
+
+    </table>
+ 
+</body>
+</html>
