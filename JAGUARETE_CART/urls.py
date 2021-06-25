@@ -4,6 +4,5 @@ from . import views
 app_name = "JAGUARETE_CART"
 
 urlpatterns = [
-    path('',views.index,name='index'),
     path('/productos',views.productos,name='productos')
 ]

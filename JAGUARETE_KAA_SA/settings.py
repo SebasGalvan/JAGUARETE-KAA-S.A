@@ -58,7 +58,7 @@ ROOT_URLCONF = 'JAGUARETE_KAA_SA.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./JAGUARETE_KAA_SA/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
