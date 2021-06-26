@@ -19,12 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',include('USUARIOS.urls')),
-    path('JAGUARETE_CART', include("JAGUARETE_CART.urls")),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('registrarse/',include('USUARIOS.urls')),
-    path('USUARIOS',include('USUARIOS.urls')),
+    path('admin/', admin.site.urls), 
+
 ]
 
 
