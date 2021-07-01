@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %} 
+    Contacto
+{%endblock%}
+
+
+{% block content %} 
+    <h3>Contactenos</h3>
+
+
+    {% if formulario.errors %}
+
+    <p style="color:red;">Revisa este campo</p>
+    
+
+    {%endif%}
+    
+    <form action="" method="POST">
+
+            {% csrf_token %}
+        
+            <!-- <p>Asunto : <input type="text" name="asunto" placeholder="Asunto"></p>
+            <p>Email : <input type="email" name="email" placeholder="Email"></p>
+            <p>Mensaje :</p><textarea name="mensaje" rows="15" cols="45" name="mensaje"></textarea> -->
+            <table>
+
+                {{formulario.as_table}}
+
+            </table>
+
+            <input type="submit" value="Enviar">
+        
+        </form>
+
+{%endblock%}
+
+  

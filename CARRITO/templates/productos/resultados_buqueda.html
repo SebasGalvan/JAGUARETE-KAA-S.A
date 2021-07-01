@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %} 
+    Productos Encontrados
+{%endblock%}
+
+
+{% block content %} 
+
+    <p>Esta buscando : {{query}}</p>
+
+    {% if productos_encontrados %}
+
+        <p>Productos encontrados: {{productos_encontrados|length}} productos</p>
+
+                {% for producto in productos_encontrados %}
+
+                        <div>{{producto}}</div>
+
+                {%endfor%} 
+
+    {% else %}
+
+            <p>Articulos no encontrados ...</p>
+
+    {%endif%}
+
+
+{%endblock%}
