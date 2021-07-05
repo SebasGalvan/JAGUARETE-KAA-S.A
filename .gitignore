@@ -80,11 +80,15 @@ target/
 
 ### Django ###
 *.log
+.log
 *.pot
+.pot
 *.pyc
+.pyc
 __pycache__/
 local_settings.py
 
 .env
 db.sqlite3
+.sqlite3
 media/
