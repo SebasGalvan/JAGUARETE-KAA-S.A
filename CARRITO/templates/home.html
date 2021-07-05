@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %} 
+    Inicio
+{%endblock%}
+
+
+{% block content %}  
+
+<div>
+
+
+    {% for pr in ultimos %}
+
+        <div>{{pr.titulo}}</div>
+        <img src="{{ pr.imagenProducto.url }}" alt="" width="200px" height="200px">
+        <div>{{pr.precio}}</div>
+        
+        <a href="{% url 'verProducto' pr.id %}">Ver mas</a>
+
+    {%endfor%} 
+
+    <p>Otros ... </p>
+    
+    {% for pr in otros %}
+
+        <div>{{pr}}</div>
+        <a href="{% url 'verProducto' pr.id %}">Ver mas</a>
+
+    {%endfor%} 
+
+</div>
+ 
+{%endblock%}
+
+
+<!-- <a href="{% url 'CARRITO/verProducto:id' pr.id %}">Ver mas</a> -->

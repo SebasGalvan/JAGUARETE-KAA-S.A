@@ -1,0 +1,22 @@
+<header>
+    <img src="" alt="logo_pagina">
+
+    {% if user.is_authenticated %}
+        <div>
+            <a href="{% url 'Carrito' %}">CARRITO</a> 
+            <a href="{% url 'Logout' %}">SALIR</a> 
+        </div>
+
+    {%else%}
+        <a href="{% url 'Login'%}">LOGIN</a>
+        <a href="{% url 'Registro' %}">REGISTRO</a>
+        <a href="{% url 'Carrito' %}">CARRITO</a> 
+    {% endif %}
+        
+
+    <form action="/buscar/" method="GET">
+        <input type="text" name="inputProducto" placeholder="Ingrese Producto">
+        <input type="submit" value="Buscar">
+    </form>
+
+</header>

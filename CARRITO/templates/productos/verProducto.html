@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %} 
+    Producto
+{%endblock%}
+
+
+{% block content %} 
+            <img src="{{producto.imagenProducto.url}}" alt="" width="200px" height="200px">
+            <p><span>Producto: </span>{{producto.titulo}}</p>
+            <p><span>Descripcion: </span>{{producto.descripcion}}</p>
+            <p><span>Precio: </span>{{producto.precio}}</p>
+            
+            <button type="button">Comprar</button>
+            <button type="button">Agregar al carrito</button>
+
+{%endblock%}

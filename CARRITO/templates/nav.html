@@ -1,0 +1,26 @@
+
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="main-bar">
+        <ul>
+            <li class="{% if request.path == '/' %}activo{% endif %}"><a href="{% url 'Home' %}">Home</a></li>
+
+
+
+            <li class="{% if request.path == '/acerca_de/' %}activo{% endif %}"><a href="{% url 'Aacerca de' %}">Acerca de</a></li>
+
+
+
+            <li class="{% if request.path == '/producto/' %}activo{% endif %}"><a href="{% url 'Producto' %}">Productos</a></li>
+
+
+
+            <li class="{% if request.path == '/carrito/' %}activo{% endif %}"><a href="{% url 'Carrito' %}">Carrito</a></li>
+
+
+
+            <li class="{% if request.path == '/contacto/' %}activo{% endif %}"><a href="{% url 'Contacto' %}">Contacto</a></li>
+
+
+
+
+        </ul>
+    </nav>
