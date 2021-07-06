@@ -1,8 +1,17 @@
 {% extends "registration/layout.html" %}
 
 {% block content %}
-Registro
+        <h2>Formulario de Registro</h2>
+
+        <form method="POST" action="{% url 'Login' %}">
+            {% csrf_token %}
+            {{ form }}
+            <div>
+                <input type="submit" value="Registrar" />
+                <input type="hidden" name="next" value="{{ next }}" />
+              </div>
+        </form>
+        
 {% endblock %}
 
   
-{% endblock %}
