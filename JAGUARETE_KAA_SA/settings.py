@@ -59,7 +59,9 @@ ROOT_URLCONF = 'JAGUARETE_KAA_SA.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/'],
+        'DIRS': ['CARRITO/templates'],
+        # 'DIRS': [''],
+        # 'DIRS': [os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,9 +110,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'es-eu'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+
+
+LANGUAGE_CODE = 'es-es'
+
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
@@ -122,7 +130,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+import os.path
+
+STATIC_ROOT = ''
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = ( os.path.join('static'), )
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -133,6 +148,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
+
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = "login/"
+LOGOUT_REDIRECT_URL = "/"
 
 
 EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
