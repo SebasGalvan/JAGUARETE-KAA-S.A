@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %} 
+    Agregar Producto
+{%endblock%}
+
+
+{% block content %} 
+
+<form action="{% url 'Agregar' %}" method="POST">
+        {% csrf_token %}
+
+        {{error}}
+
+         <div>
+            <label for="{{from.titulo}}">Titulo</label>
+            {{form.titulo}}
+         </div>
+        
+        <div>
+            <label for="{{from.descripcion}}">Descripcion</label>
+            <div></div>{{form.descripcion}}    
+        </div>
+
+        <div>
+            <label for="{{from.precio}}">Precio</label>
+            <div></div>{{form.precio}}   
+        </div>
+        
+        <div>
+            <label for="{{from.imagenProducto}}">Imagen</label>
+            <div></div>{{form.imagenProducto}}   
+        </div>
+        
+        <div>
+            <label for="{{from.categoria_id}}">Categoria</label>
+            {{form.categoria_id}}   
+        </div>
+        
+
+
+        <input type="submit" value="Agregar">
+</form>
+       
+
+{%endblock%}
+
