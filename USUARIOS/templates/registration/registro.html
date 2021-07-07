@@ -3,9 +3,10 @@
 {% block content %}
         <h2>Formulario de Registro</h2>
 
-        <form method="POST" action="{% url 'Login' %}">
+        <form method="POST" action="{% url 'Registro' %}">
             {% csrf_token %}
-            {{ form }}
+            {{form.label_tag}}
+            {{form.as_p }}
             <div>
                 <input type="submit" value="Registrar" />
                 <input type="hidden" name="next" value="{{ next }}" />
