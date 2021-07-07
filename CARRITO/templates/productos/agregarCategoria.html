@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %} 
+    Agregar Categoria 
+{%endblock%}
+
+       
+{% block content %} 
+     <form action="{% url 'AgregarCategoria' %}" method="POST">
+        {% csrf_token %}
+                <label for="">Descripcion</label>
+                <input type="text" name="descripcion">
+                <input type="submit" value="Agregar">
+    </form>
+{%endblock%}

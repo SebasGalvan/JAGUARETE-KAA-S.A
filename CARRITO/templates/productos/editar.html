@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %} 
+    Editar Producto
+{%endblock%}
+
+
+{% block content %} 
+        <form action="{$ url 'EditarProducto' $}" method="POST">
+            <div><textarea name="titulo" id="titulo" cols="40" rows="5">{{producto.titulo}}</textarea></div>
+
+            <div><textarea name="descripcion" id="descripcion" cols="40" rows="5">{{producto.descripcion}}</textarea></div>
+            
+        
+            <div><img id="imagen_producto" src="{{ producto.imagenProducto.url }}" alt="Imagen Produco" width="20%" height="35%"></div>
+            <div><input id="file_imagen" type="file"></div>
+            <div>$<input type="" value="{{producto.precio}}"></div>
+            <div>
+                <select>
+                    {% for categoria in categorias  %}
+                        {% if categoria.id == producto.categoria_id  %}
+                        <option selected value="{{categoria_id}}">{{categoria}}</option>
+                        {% else %}
+                            <option value="{{categoria_id}}">{{categoria}}</option>
+                        {% endif %}}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <input type="submit" value="Editar">
+            <input type="button" value="Cancelar">
+
+        </form>
+       
+{%endblock%}
