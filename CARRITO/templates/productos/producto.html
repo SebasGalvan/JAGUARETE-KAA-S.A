@@ -1,12 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Producto Info
-</body>
-</html>
+{% extends "layout.html" %}
+
+{% block title %} 
+    Producto
+{%endblock%}
+
+
+{% block content %} 
+            <table>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                </tr>
+                {% for producto in productos %}
+                            <tr>
+                                <td>{{ producto.titulo}}</td>
+                                <td>{{producto.descripcion}}</td>
+                                <td>{{producto.precio}}</td>
+                                <td><a href="{% url 'verProducto' producto.id %}">Ver mas</a></td>
+                            </tr>
+                {% endfor %}
+            </table>
+{%endblock%}

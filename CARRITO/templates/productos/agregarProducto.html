@@ -7,10 +7,23 @@
 
 {% block content %} 
 
-<form action="{% url 'Agregar' %}" method="POST">
+<form action="{% url 'Agregar' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-
+        <p id='mensaje' hidden=true>{{mensaje}}</p>
         {{error}}
+        
+        
+        {% if mensaje %}
+            <script>
+                mensaje = document.querySelector('#mensaje')
+                mensaje.hidden = false
+                setTimeout(function(){ 
+                    mensaje.hidden = true
+                }, 7000);
+            </script>
+        {% endif %}
+
+        
 
          <div>
             <label for="{{from.titulo}}">Titulo</label>
@@ -41,6 +54,9 @@
 
         <input type="submit" value="Agregar">
 </form>
+
+
+<a href="{% url 'AgregarCategoria' %}">Agregar Categoria</a>
        
 
 {%endblock%}

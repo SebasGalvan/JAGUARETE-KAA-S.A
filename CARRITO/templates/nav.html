@@ -1,26 +1,48 @@
 
-    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="main-bar">
+    <nav>
+
         <ul>
-            <li class="{% if request.path == '/' %}activo{% endif %}"><a href="{% url 'Home' %}">Home</a></li>
 
 
 
-            <li class="{% if request.path == '/acerca_de/' %}activo{% endif %}"><a href="{% url 'Aacerca de' %}">Acerca de</a></li>
+            <li class="{% if request.path == '/' %}activo{% endif %} nav-item"><a href="{% url 'Home' %}">Home</a></li>
+
+            {% if request.user.is_superuser %}
+            <li class="{% if request.path == '/' %}activo{% endif %} nav-item"><a href="{% url 'Agregar' %}">Agregar Producto</a></li>
+            {% endif %}
+
+            <li>
+                    <select name="categoria" id="id__categoria" onchange="mostrarSeleccon();">
+                        <option value="titulo">Categorias</option>
+                        {% for cat in categorias  %}
+                                <option value="{{cat.id}}">{{cat.descripcion}}</option>  
+                        {% endfor %}
+                    </select>
+            </li>
+
+            <li class="{% if request.path == '/acerca_de/' %}activo{% endif %} nav-item"><a href="{% url 'Aacerca de' %}">Acerca de</a></li>
 
 
 
-            <li class="{% if request.path == '/producto/' %}activo{% endif %}"><a href="{% url 'Producto' %}">Productos</a></li>
+            <li class="{% if request.path == '/producto/' %}activo{% endif %} nav-item"><a href="{% url 'Producto' %}">Productos</a></li>
+
+
+            {% if not request.user.is_superuser %}
+                <li class="{% if request.path == '/carrito/' %}activo{% endif %} nav-item"><a href="{% url 'Carrito' %}">Carrito</a></li>
+            {% endif %}
+            
 
 
 
-            <li class="{% if request.path == '/carrito/' %}activo{% endif %}"><a href="{% url 'Carrito' %}">Carrito</a></li>
+            <li class="{% if request.path == '/contacto/' %}activo{% endif %} nav-item"><a href="{% url 'Contacto' %}">Contacto</a></li>
 
 
-
-            <li class="{% if request.path == '/contacto/' %}activo{% endif %}"><a href="{% url 'Contacto' %}">Contacto</a></li>
-
-
-
-
+            <li>
+                    <form action="{% url 'Buscar' %}" method="GET">
+                        <input type="text" name="inputProducto" placeholder="Ingrese Producto">
+                        <input type="submit" value="Buscar">
+                    </form>
+            </li>
         </ul>
+    </div>
     </nav>

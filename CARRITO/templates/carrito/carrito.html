@@ -1,12 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block title %} 
     Carrito
-</body>
-</html>
+{%endblock%}
+
+
+{% block content %} 
+   
+    {% if carrito %}
+        {{mensaje}}
+        <table>
+            <tr>
+                <th>Titulo</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th>Cantidad</th>
+                <th>-</th>
+            </tr>
+        {% for producto in carrito %}
+            <tr>
+                <td class="titulo">{{producto.productos.titulo}}</td>
+                <td class="precio">{{producto.productos.precio}}</td>
+                <td class="imagen"><img src="{{producto.productos.imagenProducto.url}}" alt="Imagen carrito"   width="10%"></td>
+                <td class="cantidad">{{producto.cantidad}}</td>
+                <td class="eliminar"><a href="{% url 'EliminarDelCarrito' producto.productos.id %}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+            <div><span>Total : $</span>{{total}}</div>
+            <div><a href="">Finalizar compra</a></div>
+    {% else %}
+      {{vacio}}
+    {% endif %}
+    
+    
+    
+  
+
+{%endblock%}

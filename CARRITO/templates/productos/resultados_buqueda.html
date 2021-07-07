@@ -7,23 +7,45 @@
 
 {% block content %} 
 
-    <p>Esta buscando : {{query}}</p>
+    
 
-    {% if productos_encontrados %}
+    {% if mensaje %}
 
-        <p>Productos encontrados: {{productos_encontrados|length}} productos</p>
+        <div>{{categoria}}</div>
+        <div>{{mensaje}}</div>
 
-                {% for producto in productos_encontrados %}
+    {% elif productos_encontrados %}
+        <p>Esta buscando : {{query}}</p>
+            <p>Productos encontrados: {{productos_encontrados|length}} productos</p>
 
-                        <div>{{producto}}</div>
+                            {% for pr in productos_encontrados %}
 
-                {%endfor%} 
+                                    <div>{{pr.titulo}}</div>
+                                    <div>{{pr.descripcion}}</div>
+                                    <div>{{pr.precio}}</div>
+                                    <div>{{pr.categoria}}</div>
+                                    <img src="{{ pr.imagenProducto.url }}" alt="" width="20%" height="35%">
+                                    <a href="{% url 'verProducto' pr.id %}">Ver mas</a>
 
-    {% else %}
+                            {%endfor%} 
+        {%elif productos%}
+                {% for pr in productos%}
+                <div>{{categoria}}</div>
+                <div class="card">
+                        <div>{{pr.titulo}}</div>
+                        <div>{{pr.descripcion}}</div>
+                        <div>{{pr.precio}}</div>
+                        <div>{{pr.categoria}}</div>
+                        <img src="{{ pr.imagenProducto.url }}" alt="" width="20%" height="35%">
+                        <a href="{% url 'verProducto' pr.id %}">Ver mas</a>
+                </div>
+        {%endfor%}
 
-            <p>Articulos no encontrados ...</p>
 
-    {%endif%}
+        {% else %}
+                 <p>Articulos no encontrados ...</p>
+
+        {%endif%}
 
 
 {%endblock%}

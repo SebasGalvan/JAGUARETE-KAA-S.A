@@ -7,31 +7,44 @@
 
 {% block content %}  
 
-<div>
+
+
+<div class="container">
+
+
+    <div id="slogan">Encuentra la inspiración, las ideas y los productos ideales para cada rincón de tu vida en el hogar. Tenemos todo lo que necesitas para hacer que el espacio en el que vives sea auténticamente tuyo</div>
 
 
     {% for pr in ultimos %}
-
-        <div>{{pr.titulo}}</div>
-        <img src="{{ pr.imagenProducto.url }}" alt="" width="200px" height="200px">
-        <div>{{pr.precio}}</div>
-        
-        <a href="{% url 'verProducto' pr.id %}">Ver mas</a>
-
+        <div class="card">
+            <img src="{{ pr.imagenProducto.url }}" alt="" width="20%" height="35%">
+            <div>{{pr.titulo}}</div>
+            <div>${{pr.precio}}</div>
+            <a href="{% url 'verProducto' pr.id %}">Ver mas</a>
+        </div>
     {%endfor%} 
 
     <p>Otros ... </p>
     
-    {% for pr in otros %}
+ 
 
-        <div>{{pr}}</div>
-        <a href="{% url 'verProducto' pr.id %}">Ver mas</a>
+        <table>
+               {% for pr in otros %}
 
-    {%endfor%} 
+                <tr>
+                    <td>{{pr.titulo}}</td>
+                    <td>{{pr.descripcion}}</td>
+                    <td>{{pr.precio}}</td>
+                    <td>{{pr.}}</td>
+                    <td><a href="{% url 'verProducto' pr.id %}">Ver mas</a></td>
+                </tr>
+               {%endfor%} 
+
+        </table>
+       
+
+    
 
 </div>
  
 {%endblock%}
-
-
-<!-- <a href="{% url 'CARRITO/verProducto:id' pr.id %}">Ver mas</a> -->
