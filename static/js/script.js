@@ -7,9 +7,6 @@ function mostrarSeleccon(){
 
 };
 
-const urlBase =  window.location.href
-console.log(urlBase);
-
 function buscapPorCategoria(id){
     url = getURL(window.location.href)+ id
     location.replace(url)

@@ -4,28 +4,33 @@
     Carrito
 {%endblock%}
 
-
 {% block content %} 
    
     {% if carrito %}
-        {{mensaje}}
+        {%if mensaje %}
+            {{mensaje}}
+        {% endif %}
         <table>
-            <tr>
-                <th>Titulo</th>
-                <th>Precio</th>
-                <th>Imagen</th>
-                <th>Cantidad</th>
-                <th>-</th>
+            <tr class="row_tabla">
+                <th class="head_tabla">Titulo</th>
+                <th class="head_tabla">Precio</th>
+                <th class="head_tabla">Cantidad</th>
+                <th class="head_tabla">-</th>
             </tr>
+
         {% for producto in carrito %}
-            <tr>
-                <td class="titulo">{{producto.productos.titulo}}</td>
-                <td class="precio">{{producto.productos.precio}}</td>
-                <td class="imagen"><img src="{{producto.productos.imagenProducto.url}}" alt="Imagen carrito"   width="10%"></td>
-                <td class="cantidad">{{producto.cantidad}}</td>
-                <td class="eliminar"><a href="{% url 'EliminarDelCarrito' producto.productos.id %}">Eliminar</a></td>
+
+
+            <tr class="row_tabla">
+                <td class="col_tabla titulo">{{producto.productos.titulo}}</td>
+                <td class="col_tabla col_items precio">{{producto.productos.precio}}</td>
+                <td class="col_tabla col_items cantidad">{{producto.cantidad}}</td>
+                <td class="col_tabla col_items eliminar link_producto"><a class="link_producto" href="{% url 'EliminarDelCarrito' producto.productos.id %}">Eliminar</a></td>
             </tr>
             {% endfor %}
+
+
+
         </table>
 
             <div><span>Total : $</span>{{total}}</div>

@@ -23,40 +23,77 @@
             </script>
         {% endif %}
 
-        
+        <div class="formulario">
+        <div class="contenedor_form">
 
-         <div>
-            <label for="{{from.titulo}}">Titulo</label>
-            {{form.titulo}}
+
+        <div class="campos_forms">
+            <label class="eqtiqueta_form" for="{{from.titulo}}">Titulo</label>
+            <input class="input_campo" type="text" name="titulo" maxlength="100" required="" id="id_titulo">
          </div>
         
-        <div>
-            <label for="{{from.descripcion}}">Descripcion</label>
-            <div></div>{{form.descripcion}}    
+        <div class="campos_forms">
+            <label class="eqtiqueta_form for="{{from.descripcion}}">Descripcion</label>
+            <input class="input_campo" type="text" name="descripcion" maxlength="100" required="" id="id_descripcion">  
         </div>
 
-        <div>
-            <label for="{{from.precio}}">Precio</label>
-            <div></div>{{form.precio}}   
+        <div class="campos_forms">
+            <label class="eqtiqueta_form for="{{from.precio}}">Precio</label>
+            <input class="input_campo" type="number" name="precio" step="any" required="" id="id_precio">
         </div>
         
-        <div>
-            <label for="{{from.imagenProducto}}">Imagen</label>
-            <div></div>{{form.imagenProducto}}   
+        <div class="campos_forms">
+            <label class="eqtiqueta_form for="{{from.imagenProducto}}">Imagen</label>
+            <input class="input_campo" type="file" name="imagenProducto" accept="image/*" id="id_imagenProducto"> 
         </div>
         
-        <div>
-            <label for="{{from.categoria_id}}">Categoria</label>
-            {{form.categoria_id}}   
+        <div class="campos_forms">
+            
+            <select class="input_campo" name="categoria_id" required="" id="id_categoria_id">
+                <option value="" selected="">Categoria</option>
+              
+                <option value="2">TEXTILES Y BLANCOS</option>
+              
+                <option value="3">MUEBLES</option>
+              
+                <option value="4">COCINA Y BAZAR</option>
+              
+                <option value="5">DECORACION</option>
+              
+                <option value="6">JARDIN</option>
+              
+                <option value="7">COLCHONES Y SOMMIERS</option>
+              
+                <option value="8">ILUMINACION</option>
+              
+                <option value="9">BAÑOS</option>
+              
+                <option value="10">SEGURIDAD PARA EL HOGAR</option>
+              
+                <option value="11">ORGANIZACION</option>
+              
+                <option value="12">CORTINAS Y ACCESORIOS</option>
+              
+                <option value="14">SILLAS</option>
+              
+                <option value="15">SOFA</option>
+              
+                <option value="16">UTENSILIOS</option>
+              
+                <option value="17">LAVANDERIA</option>
+              
+              </select>  
         </div>
         
 
 
         <input type="submit" value="Agregar">
+        </div>
+        </div>
 </form>
 
 
-<a href="{% url 'AgregarCategoria' %}">Agregar Categoria</a>
+<a class="link_producto" href="{% url 'AgregarCategoria' %}">Agregar Categoria</a>
        
 
 {%endblock%}

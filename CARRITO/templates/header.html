@@ -1,27 +1,47 @@
-<header>
+<header >
 
-    {% load static %}
-    <img src="{% static 'img/logo.png.url' %}" alt="logo_pagina">
+    <div class="row">
 
-    {% if user.is_authenticated %}
-
-        {% if request.user.is_superuser %}
-        <div>
-            <a href="{% url 'Logout' %}">SALIR</a> 
-        </div>
-        {%else%}
-            <div>
-                <a href="{% url 'Carrito' %}">CARRITO</a> 
-                <a href="{% url 'Logout' %}">SALIR</a> 
+            <div class="col" id="logo_marca" >
+                <div class="logo_jk">
+                    <p id="logo_jk">JK</p>
+                </div>
+                <p id="marca">Jaguarete Kaa SA</p>
             </div>
-        {% endif %}
 
-    {%else%}
-        <a href="{% url 'Login'%}">LOGIN</a>
-        <a href="{% url 'Registro' %}">REGISTRO</a>
-        <a href="{% url 'Carrito' %}">CARRITO</a> 
-    {% endif %}
-        
+            
+            <div class="col" id="opciones_user">
+                {% if user.is_authenticated %}
+                    <div class="usuarioConectado">
+                        <p class="usuario">Usuario: </p>
+                        <p class="usuario_conactado">{{ user.get_full_name }}</p>
+                    </div>
+                {% endif%}
+                <div class="opciones">
+                    {% if user.is_authenticated %}
+                            {% if request.user.is_superuser %}
+                                    <a class="boton_opciones_user" href="{% url 'Logout' %}">SALIR</a> 
+                            {%else%}
+                                <div class="row">
+                                        <a class="boton_opciones_user col col-lg-6 col-sm-12 col-xs-12" href="{% url 'Carrito' %}">CARRITO</a> 
+                                        <a class="boton_opciones_user col col-lg-6 col-sm-12 col-xs-12" href="{% url 'Logout' %}">SALIR</a> 
+                                </div>
+                                        
+                    
+                            {% endif %}
+                    {%else%}
+                            <div class="row" >
+                                <a class="boton_opciones_user col-lg-4 col-sm-12 col-xs-12 mr-auto" href="{% url 'Login'%}">LOGIN</a>
+                                <a class="boton_opciones_user col-lg-4 col-sm-12 col-xs-12 mr-auto" href="{% url 'Registro' %}">REGISTRO</a>
+                                <a class="boton_opciones_user col-lg-4 " href="{% url 'Carrito' %}">CARRITO</a> 
+                            </div>
+                                
+                    {% endif %}
+                </div>
+
+
+            </div> 
+    <!-- </div>     -->
 
 
 </header>

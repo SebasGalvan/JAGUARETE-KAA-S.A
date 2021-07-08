@@ -1,24 +1,399 @@
-h1{
-    color: red;
+/* CSS HEX
+colore {
+    space-cadet: #22223b;
+    independence: #4a4e69;
+    heliotrope-gray: #9a8c98;
+    silver-pink: #c9ada7;
+    isabelline: #f2e9e4;
+} */
+
+
+.contenedor{
+    min-height:580px;
+    margin: 0%;
+    padding: 0%;
 }
 
-.activo{
-    color: red;
-}
 
 li{
-
     list-style: none;
 }
-a{
-    text-decoration: none;
-    color: #000;
+
+
+.barrra-item{
+    color: #c9ada7;
+}
+
+
+
+#logo_marca {
+    background: #22223b;
+    font-family: 'Otomanopee One', sans-serif;
+    width: 20%;
+    /* border-radius: 50%; */
+}
+
+#logo_jk {
+    font-family: 'Otomanopee One', sans-serif;
+    color: #f2e9e4;
+    font-size: 1.3em;
+
+} 
+
+#marca {
+    font-family: 'Otomanopee One', sans-serif;
+    color: #f2e9e4;
+    font-size: .7em;
     
 }
 
-a:hover{
-    color: violet;
+select{
+    border: none;
+    padding-right: 0;
+    padding-left: 0;
+    background: #000000;
+    opacity: 0.5;
+    padding: .5rem 1rem;
+    background-color: transparent;
 }
 
 
-/* side */
+#opciones_user{
+    background-color: #22223b;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.opciones{
+    margin: 0%;
+    padding-bottom: 1.4em;
+    padding-right: 2em;
+}
+
+
+nav{
+    background-color: #c9ada7;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#busqueda_caja{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.info_producto{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+footer{
+    background-color: #22223b;
+    color: #c9ada7;
+    margin-top: 2em;
+}
+
+
+.boton_ver_mas{
+    background-color: #22223b;
+    color: #c9ada7;
+    padding: .5rem 1rem;
+    border-radius: 10em;  
+}
+
+.boton_ver_mas:hover{
+    background-color: #c9ada7;
+    color: #22223b;
+}
+
+
+.btn_abajo{
+    position: absolute;
+    bottom: 5%;
+    right: 2%;
+}
+
+
+.boton_opciones_user{
+    text-decoration: none;
+    background-color: #c9ada7;
+    color: #22223b;
+    padding: .5rem 1rem;
+    margin-top: 1em;
+    text-align: center;
+  
+}
+
+.boton_opciones_user:hover{
+    color: #000000;
+    background-color: #f2e9e4;
+}
+
+
+#opciones_user{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right:2em ;
+}
+
+
+.logo_jk .marca{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.usuarioConectado{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: #f2e9e4;
+    margin: 0%; 
+    margin-right: 3em;
+    padding-top: .8em;;
+}
+
+
+.usuario{
+   margin: 0%;
+   padding: 0%;
+   font-size: .7em;
+}
+
+.usuario_cunectado{
+    text-align: center;
+
+}
+
+
+.fila_producto{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+}
+
+#slogan{
+    padding: 1.3em;
+    color: #22223b;
+    background-color: #f2e9e4;
+    border-radius: .3em;
+    margin-bottom: .4em;
+    text-align: center;
+    font-family: 'Antic Slab', serif;
+    font-size: 1.2em;
+}
+
+
+.barrra-item :hover {
+    background-color: #c9ada7;
+}
+#boton__buscar :hover{
+    background-color: #c9ada7;
+}
+
+option :hover{
+    background-color: #c9ada7;
+}
+
+
+
+.foot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: flex-start;
+}
+
+.copy{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.texto_copy{
+    font-size: .8em;
+    color: #f2e9e4;
+}
+
+
+.imagen_producto{
+    margin-top: 2em;
+    margin-left: 2em;
+}
+
+.info_producto{
+    
+    margin-top: 2em
+}
+
+.mensaje {
+    background-color: #c9ada7;
+    color: #22223b;
+    padding: 0.4em;
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+.contenedor_form{
+    padding: 1em;
+    border: #22223b solid;
+}
+.campos_forms{
+    display: flex;
+    flex-direction: column;
+}
+
+.eqtiqueta_form{
+    color: #22223b;
+    font-size: 1.2em;
+}
+
+#id_username, #id_password, #id_verificacion_password, #id_email, #id_nombre, #id_apellido,#id_asunto,#id_mensaje{
+      width: 300px;
+    background-color: #f2e9e4;
+    color: #22223b;
+}
+.boton_enviar{
+    color: #c9ada7;
+    background-color: #22223b;
+    padding: .7em;
+    border: none;
+    width: auto;
+
+}
+
+.links_login{
+    background-color: #22223b;
+    color: #c9ada7;
+    padding: .5rem 1rem;
+    border-radius: 10em;
+    text-decoration: none; 
+}
+
+.links_login:hover{
+    background-color: #c9ada7;
+    color: #22223b;
+}
+
+.contenedor_link_log{
+    margin-top: 2em;
+}
+
+
+.head_tabla{
+    background-color: #22223b;
+    color: #c9ada7;
+}
+.row_tabla{
+    height: 2em;
+}
+
+.row_tabla:hover{
+    background-color: #f2e9e4;
+    color: #22223b;
+}
+
+.link_producto{
+    text-decoration: none;
+    padding: 0.3em;
+    background-color: #c9ada7;
+    color: #f2e9e4;
+    width: 6em;
+    margin-top: .3em;
+    border-radius: 5em;
+    text-align: center;
+}
+
+.link_producto:hover{
+    background-color: #f2e9e4;
+    color: #22223b;
+}
+
+.descripcion{
+    padding-right: 3em;
+}
+
+.etiqueta{
+    color: #22223b;
+    background-color: #f2e9e4;
+}
+
+
+.contenedor_de_productos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2em;
+    border: #22223b dotted;
+    padding-bottom: 0.5em;
+}
+.informacion{
+    min-width: 70%;
+    padding-left: 2em;
+}
+
+.col_imagen{
+    display: flex;
+    flex-direction: column;
+    /* max-width: 20%; */
+    justify-content: center;
+    align-items: center;
+    padding-right: 2em;
+}
+.titulo_producto{
+    font-size: 2em;
+}
+
+.info_producto{
+
+    color: #22223b;
+
+}
+
+.imagen_producto{
+    align-content: center;
+}
+
+
+.contenedor_productos{
+    display: flex;
+    flex-direction: column;
+}
+
+.categoria_info{
+    margin-bottom: 1em;
+}
+
+
+.col_tabla .titulo{
+    padding-right: 4em;
+}
+
+.col_items{
+    text-align: center;
+}
+
+
+.contenedor_acerca{
+    padding: 4em;
+    text-align: justify;
+}

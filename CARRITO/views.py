@@ -17,9 +17,6 @@ def inicio(request):
     for pr in ultimos:
         pr.titulo =  pr.titulo[:43]
     otros = Producto.objects.all().order_by('-id')[3:10]
-    for pr in otros:
-        pr.titulo =  pr.titulo[:30]
-        pr.descripcion =  pr.descripcion[:30] + '...'
     return render(request,'home.html',{"ultimos":ultimos,"otros":otros})
 
 def verProducto(request,id):
@@ -127,7 +124,7 @@ def agregarCarrito(request ,id):
             obj.productos = producto
             obj.cantidad = cantidad
             obj.save()
-            return render(request,'productos/verProducto.html',{'producto': producto, 'mensaje' : 'Producto agregado a carrito'})
+            return render(request,'productos/verProducto.html',{'producto': producto, 'mensaje' : 'Producto agregado al carrito'})
 
 def eliminarDelCarrito(request,id):
     user = request.user

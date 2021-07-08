@@ -7,7 +7,7 @@
 
 {% block content %} 
 
-    
+    <div class="contenedor_productos">
 
     {% if mensaje %}
 
@@ -20,25 +20,40 @@
 
                             {% for pr in productos_encontrados %}
 
-                                    <div>{{pr.titulo}}</div>
-                                    <div>{{pr.descripcion}}</div>
-                                    <div>{{pr.precio}}</div>
-                                    <div>{{pr.categoria}}</div>
-                                    <img src="{{ pr.imagenProducto.url }}" alt="" width="20%" height="35%">
-                                    <a href="{% url 'verProducto' pr.id %}">Ver mas</a>
+                            <div class="contenedor_de_productos">
+                                <div class="informacion">
+                                    <div class="titulo_producto">{{pr.titulo}}</div>
+                                     <div class="info_de_producto">{{pr.descripcion}}</div>
+                                    <div class="info_de_producto">{{pr.precio}}</div>
+                                    <div class="info_de_producto">{{pr.categoria}}</div>
+                                </div>
+                                <div class="col_imagen">
+                                         <img class="imagen_producto" src="{{ pr.imagenProducto.url }}" alt="" height="200px" width="auto" >
+                                        <a class="link_producto" href="{% url 'verProducto' pr.id %}">Ver mas</a>
+                                </div>
+                           
+                        </div>
 
                             {%endfor%} 
         {%elif productos%}
-                {% for pr in productos%}
-                <div>{{categoria}}</div>
-                <div class="card">
-                        <div>{{pr.titulo}}</div>
-                        <div>{{pr.descripcion}}</div>
-                        <div>{{pr.precio}}</div>
-                        <div>{{pr.categoria}}</div>
-                        <img src="{{ pr.imagenProducto.url }}" alt="" width="20%" height="35%">
-                        <a href="{% url 'verProducto' pr.id %}">Ver mas</a>
-                </div>
+
+                <div class="categoria_info">{{categoria}}</div>
+
+                  
+                    {% for pr in productos%}
+                        <div class="contenedor_de_productos">
+                        <div class="informacion">
+                            <div class="titulo_producto">{{pr.titulo}}</div>
+                             <div class="info_de_producto">{{pr.descripcion}}</div>
+                            <div class="info_de_producto">{{pr.precio}}</div>
+                            <div class="info_de_producto">{{pr.categoria}}</div>
+                        </div>
+                        <div class="col_imagen">
+                                 <img class="imagen_producto" src="{{ pr.imagenProducto.url }}" alt="" height="200px" width="auto" >
+                                <a class="link_producto" href="{% url 'verProducto' pr.id %}">Ver mas</a>
+                        </div>
+                   
+                    </div>
         {%endfor%}
 
 
@@ -46,6 +61,6 @@
                  <p>Articulos no encontrados ...</p>
 
         {%endif%}
-
+    </div>
 
 {%endblock%}

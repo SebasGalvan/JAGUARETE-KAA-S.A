@@ -4,15 +4,53 @@
         <h2>Formulario de Registro</h2>
 
         <form method="POST" action="{% url 'Registro' %}">
-            {% csrf_token %}
-            {{form.label_tag}}
-            {{form.as_p }}
-            <div>
-                <input type="submit" value="Registrar" />
+          
+          {% csrf_token %}
+
+
+
+          <div class="formulario">
+            <div class="contenedor_form">
+
+              <div class="campos_forms">
+                <p class="eqtiqueta_form">Usuario</p>
+                <p class="input_campo">{{form.username}}</p>
+              </div>
+              
+              <div class="campos_forms">
+                <p class="eqtiqueta_form">Contraseña</p>
+                <p class="input_campo">{{form.password}}</p>
+              </div>
+               
+              <div class="campos_forms">
+                <p class="eqtiqueta_form">Verificar Contraseña</p>
+                <p class="input_campo">{{form.verificacion_password}}</p>
+              </div>
+
+              <div class="campos_forms">
+                <p class="eqtiqueta_form">Email</p>
+                <p class="input_campo">{{form.email}}</p>
+              </div>
+              <div class="campos_forms">
+                <p class="eqtiqueta_form">Nombre</p>
+                <p class="input_campo">{{form.nombre}}</p>
+              </div>
+              <div class="campos_forms">
+                <p class="eqtiqueta_form">Apellido</p>
+                <p class="input_campo">{{form.apellido}}</p>
+              </div>
+              
+              <div class="campos_forms">
+                <input class="boton_enviar" type="submit" value="Registrar"/>
                 <input type="hidden" name="next" value="{{ next }}" />
               </div>
+          </div>
+          </div>
+
+           
         </form>
         
 {% endblock %}
 
   
+           

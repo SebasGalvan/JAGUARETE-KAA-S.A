@@ -13,11 +13,31 @@
     <form action="" method="POST">
 
             {% csrf_token %}
-            <table>
-                {{formulario.as_table}}
-            </table>
-            <input type="submit" value="Enviar">
-        
+
+            <div class="formulario">
+                <div class="contenedor_form">
+            <div class="campos_forms">
+                <p class="eqtiqueta_form">Asunto</p>
+                <p class="input_campo">{{formulario.asunto}}</p>
+              </div>
+              <div class="campos_forms">
+                <p class="eqtiqueta_form">Email</p>
+                <p class="input_campo">{{formulario.email}}</p>
+              </div>
+              <div class="campos_forms">
+                <p class="eqtiqueta_form">Mensaje</p>
+                <p class="input_campo">{{formulario.mensaje}}</p>
+              </div>
+              
+              <div class="campos_forms">
+                <input class="boton_enviar" type="submit" value="Enviar"/>
+                <input type="hidden" name="next" value="{{ next }}" />
+              </div>
+
+            </div>
+            </div>
+
+
         </form>
 
 {%endblock%}

@@ -7,24 +7,46 @@
 
 {% block content %} 
 
-        <div>{{mensaje}}</div>
+        {% if mensaje %}
+            <div class = "mensaje">{{mensaje}}</div>
+        {% endif %}
 
         {% if producto %}
 
-                <div>
-                    <img src="{{producto.imagenProducto.url}}" alt="" width="30%" height="55%">
-                    <p><span>Producto: </span>{{producto.titulo}}</p>
-                    <p><span>Descripcion: </span>{{producto.descripcion}}</p>
-                    <p><span>Precio: </span>{{producto.precio}}</p>
-                    
-                    <a href="">Comprar</a>
-                    <a href="{% url 'AgregarCarrito' producto.id  %}">Agregar al carrito</a>
-                    {% if request.user.is_superuser %}
-                        <a href="{% url 'EditarProducto' producto.id  %}">Editar Producto</a>
-                        <a href="{% url 'EliminarProducto' producto.id  %}">Eliminar Producto</a>
-                    {% endif %}
-                </div>
-           
+                <div class="row">
+
+                    <div class="col-lg-6 col-sm-12 col-xs-12 col-ms-6 imagen_producto">
+
+                            <img src="{{producto.imagenProducto.url}}" alt="Imagen producto: {{producto.titulo}}" width="70%">
+                            
+
+                    </div>
+
+                    <div class="col info_producto">
+                        <div class="row">
+                            <div class="col">
+                                <p><span class="etiqueta">Producto: </span><br>{{producto.titulo}}</p>
+                                <p><span class="etiqueta">Descripcion: </span><br>{{producto.descripcion}}</p>
+                                <p><span class="etiqueta">Precio: </span><br>${{producto.precio}}</p>
+                            </div>
+                            <div class="col-12">
+                                    <div class="btn-group">
+                                        <a class="btn boton_ver_mas" href="">Comprar</a>
+                                        <a class="btn boton_ver_mas" href="{% url 'AgregarCarrito' producto.id  %}">Agregar al carrito</a>
+                                    </div>
+                                </div>
+                                
+                                {% if request.user.is_superuser %}
+                                <div class="col">
+                                    <div class="btn-group">
+                                        <a class="btn boton_ver_mas" href="{% url 'EditarProducto' producto.id  %}">Editar Producto</a>
+                                        <a class="btn boton_ver_mas" href="{% url 'EliminarProducto' producto.id  %}">Eliminar Producto</a> 
+                                    </div>
+                                </div>
+                                {% endif %}
+                        </div>
+                        </div>
+                    </div>
 
         {% else %}
                 {{vacio}}

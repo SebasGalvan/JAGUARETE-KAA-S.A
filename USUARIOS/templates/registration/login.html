@@ -21,26 +21,34 @@
 {% endif %}
 
 <form method="POST" action="{% url 'login' %}">
-{% csrf_token %}
+      {% csrf_token %}
+      <div class="formulario">
+        <div class="contenedor_form">
+          <div class="campos_forms">
+            <p class="eqtiqueta_form">Usuario</p>
+            <p class="input_campo">{{form.username }}</p>
+          </div>
+          
+          <div class="campos_forms">
+            <p class="eqtiqueta_form">Contraseña</p>
+            <p class="input_campo">{{form.password }}</p>
+          </div>
 
-<div>
-  <td>Usuario</td>
-  <td>{{ form.username }}</td>
-  </div>
-<div>
+          <div class="campos_forms">
+            <input class="boton_enviar" type="submit" value="Login" />
+            <input type="hidden" name="next" value="{{ next }}" />
+          </div>
+        </div>
+      </div>
+     
 
-  <td>Contraseña</td>
-  <td>{{ form.password }}</td>
-</div>
-
-<div>
-  <input type="submit" value="Login" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</div>
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a></p>
-<p><a href="{% url 'Registro' %}">Soy Nuevo</a></p>
+<div class="contenedor_link_log">
+  <p><a class = "links_login" href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a></p>
+  <p><a class = "links_login" href="{% url 'Registro' %}">Soy Nuevo</a></p>
+</div>
+
 
 {% endblock %}

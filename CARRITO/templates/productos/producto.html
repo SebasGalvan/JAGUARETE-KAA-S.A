@@ -8,16 +8,17 @@
 {% block content %} 
             <table>
                 <tr>
-                    <th>Titulo</th>
-                    <th>Descripcion</th>
-                    <th>Precio</th>
+                    <th class="head_tabla">Titulo</th>
+                    <th class="head_tabla">Descripcion</th>
+                    <th class="head_tabla">Precio</th>
+                    <th class="head_tabla">  </th>
                 </tr>
                 {% for producto in productos %}
-                            <tr>
-                                <td>{{ producto.titulo}}</td>
-                                <td>{{producto.descripcion}}</td>
-                                <td>{{producto.precio}}</td>
-                                <td><a href="{% url 'verProducto' producto.id %}">Ver mas</a></td>
+                            <tr class="row_tabla">
+                                <td class="col_tabla">{{ producto.titulo}}</td>
+                                <td class="col_tabla descripcion">{{producto.descripcion}}</td>
+                                <td class="col_tabla">{{producto.precio}}</td>
+                                <td class="col_tabla"><a class=" link_producto"href="{% url 'verProducto' producto.id %}">Ver mas</a></td>
                             </tr>
                 {% endfor %}
             </table>
