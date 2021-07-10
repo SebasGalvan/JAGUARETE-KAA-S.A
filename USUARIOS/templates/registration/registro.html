@@ -57,13 +57,14 @@
               {% if request.user.is_superuser %}
 
                 <div class="campos_forms" style="margin-top: 2em;">
-                  <input type="hidden" name="super" value="True" />
+                  <input type="hidden" name="super" value="True"/>
                   <input class="boton_enviar" type="submit" value="Registrar SU" disabled  id="btn_registrar"/>
                 </div>
 
               {% else %}
 
                   <div class="campos_forms" style="margin-top: 2em;">
+                    <input type="hidden" name="super" value="False" />
                     <input class="boton_enviar" type="submit" value="Registrar" disabled  id="btn_registrar"/>
                   </div>
 

@@ -21,9 +21,9 @@ def registro(request):
         usuario.first_name = nombre
         usuario.last_name = apellido
         
-        super = bool(request.POST['super'])
+        super = request.POST['super']
         if super:
-            usuario.is_superuser = True
+            usuario.is_staff = True
             usuario.save()
             ultimos = Producto.objects.all().order_by('-id')[:3]
             for pr in ultimos:
@@ -35,9 +35,9 @@ def registro(request):
         form = formularioLogin
         return render(request,'registration/login.html',{'form':form})
         
-    else:
-        form = formularioRegistro
-        return render(request,'registration/registro.html',{'form':form})
+    
+    form = formularioRegistro
+    return render(request,'registration/registro.html',{'form':form})
 
 
 
