@@ -6,6 +6,17 @@
 
 
 {% block content %} 
+
+            {% if mensaje%}
+                <div id="mensaje">{{mensaje}}</div>
+                <script>
+                    mensaje = document.querySelector('#mensaje')
+                    mensaje.hidden = false
+                    setTimeout(function(){ 
+                        mensaje.hidden = true
+                    }, 7000);
+                </script>
+            {% endif %}
             <table>
                 <tr>
                     <th class="head_tabla">Titulo</th>

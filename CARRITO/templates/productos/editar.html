@@ -6,30 +6,77 @@
 
 
 {% block content %} 
-        <form action="{$ url 'EditarProducto' $}" method="POST">
-            <div><textarea name="titulo" id="titulo" cols="40" rows="5">{{producto.titulo}}</textarea></div>
 
-            <div><textarea name="descripcion" id="descripcion" cols="40" rows="5">{{producto.descripcion}}</textarea></div>
+
+
+        <form action="{% url 'EditarProducto' producto.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="formulario">
+            <div class="contenedor_form">
+
+            <div class="campos_forms">
+                <p class="etiqueta_form">Titulo</p>
+                <textarea class="input_campo" name="titulo" id="titulo" cols="40" rows="5">{{producto.titulo}}</textarea>
+            </div>
             
-        
-            <div><img id="imagen_producto" src="{{ producto.imagenProducto.url }}" alt="Imagen Produco" width="20%" height="35%"></div>
-            <div><input id="file_imagen" type="file"></div>
-            <div>$<input type="" value="{{producto.precio}}"></div>
-            <div>
-                <select>
-                    {% for categoria in categorias  %}
-                        {% if categoria.id == producto.categoria_id  %}
-                        <option selected value="{{categoria_id}}">{{categoria}}</option>
-                        {% else %}
-                            <option value="{{categoria_id}}">{{categoria}}</option>
-                        {% endif %}}
-                    {% endfor %}
-                </select>
+
+            <div class="campos_forms">
+                <p class="etiqueta_form">Descripcion</p>
+                <textarea class="input_campo" name="descripcion" id="descripcion" cols="40" rows="5">{{producto.descripcion}}</textarea>
             </div>
 
-            <input type="submit" value="Editar">
-            <input type="button" value="Cancelar">
+
+            <div class="campos_forms">
+                    <p class="etiqueta_form">Imagen actual</p>
+                    <img id="imagen_actual" src="{{ producto.imagenProducto.url }}" alt="Imagen Produco" width="20%" height="35%">
+                    <p style="margin-top: 2em;" class="eqtiqueta_form">Nueva imagen</p>
+                    <input class="input_campo" type="file" name="imagenProducto" accept="image/*" id="imagenProducto"> 
+            </div>
+
+
+
+            <div class="campos_forms" style="margin-top: 2em;">
+                <p class="etiqueta_form">Precio: actual ${{producto.precio}}</p>
+                <input type="number" class="input_campo" name="precio" id="precio" value="{{producto.precio}}" placeholder="$ Nuevo Precio">
+            </div>
+
+
+            <div class="campos_forms" style="margin-top: 2em;">
+                <p class="etiqueta_form">Categoria</p>
+
+            <select class="input_campo" name="categoria_id" required="" id="id_categoria_id" style="border: #ccc dotted;">
+                    {% for categoria in categorias%}
+                        {% if categoria.id == producto.categoria_id  %}
+                            <option value="{{categoria.id}}" selected>{{categoria.descripcion}}</option>
+                        {% else %}
+                            <option value="{{categoria.id}}">{{categoria.descripcion}}</option>
+                        {% endif %}
+                    {% endfor %}
+                  </select> 
+            </div>
+
+            
+            
+            <div class="row" style="margin-top: 2em;">
+
+            <div class="campos_forms col-6">
+                <input class="boton_enviar" type="submit" value="Editar">
+            </div>
+
+            <div class="campos_forms col">
+                <a class="boton_enviar" href="{% url 'verProducto' producto.id %}">Cancelar</a>
+            </div> 
+            </div>
+            
+
+
+        </div>
+        </div>
 
         </form>
+
+
+
        
 {%endblock%}

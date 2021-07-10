@@ -25,10 +25,13 @@
 
                 {% if request.user.is_superuser %}
                 <li class="{% if request.path == '/' %}activo{% endif %} nav-item barrra-item"><a class="nav-link" href="{% url 'Agregar' %}">Agregar Producto</a></li>
+            
+                <li class="{% if request.path == '/agregar_suser/' %}activo{% endif %} nav-item barrra-item"><a style="background-color: 9a8c98;" class="nav-link" href="{% url 'Registro' %}">Agregar Super User</a></li>
                 {% endif %}
 
+
                 <li>
-                        <select  class="form-select" aria-label="Categorias" id="id__categoria" onchange="mostrarSeleccon();">
+                        <select  class="form-select" aria-label="Categorias" id="id__categoria" onchange="mostrarSelecion();">
                             <option class="accordion-item" value="titulo">Categorias</option>
                             {% for cat in categorias  %}
                                     <option value="{{cat.id}}">{{cat.descripcion}}</option>  
@@ -37,9 +40,10 @@
                         
                 </li>
 
+                {% if not request.user.is_superuser %}
                 <li class="{% if request.path == '/acerca_de/' %}activo{% endif %} nav-item barrra-item"><a class="nav-link" href="{% url 'Aacerca de' %}">Acerca de</a></li>
-
-
+                {% endif %}
+              
 
                 <li class="{% if request.path == '/producto/' %}activo{% endif %} nav-item barrra-item"><a class="nav-link" href="{% url 'Producto' %}">Productos</a></li>
 
@@ -50,14 +54,12 @@
 
                 <li class="{% if request.path == '/contacto/' %}activo{% endif %} nav-item barrra-item"><a class="nav-link" href="{% url 'Contacto' %}">Contacto</a></li>
 
-                <div id='busqueda_caja'>
                 <li class="nav-link">
                         <form class="d-flex" action="{% url 'Buscar' %}" method="GET">
                             <input class="form-control me-2" type="search" name="inputProducto"  placeholder="Buscar" aria-label="Buscar">
                             <input class="btn" id="boton__buscar" type="submit" value="Buscar">
                         </form>
                 </li>  
-                </div>
             </ul>
     </div>
     </nav>

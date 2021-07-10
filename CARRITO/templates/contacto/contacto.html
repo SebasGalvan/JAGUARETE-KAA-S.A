@@ -6,7 +6,7 @@
 
 
 {% block content %} 
-    <h3>Contactenos</h3>
+    <h3>Contáctenos</h3>
     {% if formulario.errors %}
     <p style="color:red;">Revisa este campo</p>
     {%endif%}
@@ -16,25 +16,23 @@
 
             <div class="formulario">
                 <div class="contenedor_form">
-            <div class="campos_forms">
-                <p class="eqtiqueta_form">Asunto</p>
-                <p class="input_campo">{{formulario.asunto}}</p>
+                  <div class="campos_forms">
+                      <p class="eqtiqueta_form">Asunto</p>
+                      <input class="input_campo" type="text" name="asunto" placeholder="Asunto">                  
+                    </div>
+                    <div class="campos_forms">
+                      <p class="eqtiqueta_form">Email</p>
+                      <input class="input_campo" type="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="campos_forms">
+                      <p class="eqtiqueta_form">Mensaje</p>
+                      <textarea class="input_campo" name="mensaje" id="mensaje" cols="50" rows="5" placeholder="Mensaje"></textarea>
+                    </div>
+                    
+                    <div class="campos_forms" style="margin-top: 2em;">
+                      <input class="boton_enviar" type="submit" value="Enviar"/>
+                    </div>
               </div>
-              <div class="campos_forms">
-                <p class="eqtiqueta_form">Email</p>
-                <p class="input_campo">{{formulario.email}}</p>
-              </div>
-              <div class="campos_forms">
-                <p class="eqtiqueta_form">Mensaje</p>
-                <p class="input_campo">{{formulario.mensaje}}</p>
-              </div>
-              
-              <div class="campos_forms">
-                <input class="boton_enviar" type="submit" value="Enviar"/>
-                <input type="hidden" name="next" value="{{ next }}" />
-              </div>
-
-            </div>
             </div>
 
 

@@ -7,6 +7,8 @@
 
 {% block content %} 
 
+        {% load static %}
+
         {% if mensaje %}
             <div class = "mensaje">{{mensaje}}</div>
         {% endif %}
@@ -24,26 +26,35 @@
 
                     <div class="col info_producto">
                         <div class="row">
-                            <div class="col">
+                            <div class="col-12">
                                 <p><span class="etiqueta">Producto: </span><br>{{producto.titulo}}</p>
                                 <p><span class="etiqueta">Descripcion: </span><br>{{producto.descripcion}}</p>
                                 <p><span class="etiqueta">Precio: </span><br>${{producto.precio}}</p>
                             </div>
+                            {% if not request.user.is_superuser %}
+                                    <div class="col-12">
+                                        <div class="btn-group">
+                                            <a class="btn boton_ver_mas" href="">Comprar</a>
+                                            <a class="btn boton_ver_mas" href="{% url 'AgregarCarrito' producto.id  %}">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                            {% endif %}           
+                            {% if request.user.is_superuser %}
                             <div class="col-12">
-                                    <div class="btn-group">
-                                        <a class="btn boton_ver_mas" href="">Comprar</a>
-                                        <a class="btn boton_ver_mas" href="{% url 'AgregarCarrito' producto.id  %}">Agregar al carrito</a>
-                                    </div>
+                                <div class="btn-group">
+                                    <a class="btn boton_ver_mas" href="{% url 'EditarProducto' producto.id  %}">Editar Producto</a>
+                                    <a class="btn boton_ver_mas" id="btn_eliminar" onclick="eliminarProducto()">Eliminar Producto</a> 
                                 </div>
-                                
-                                {% if request.user.is_superuser %}
-                                <div class="col">
-                                    <div class="btn-group">
-                                        <a class="btn boton_ver_mas" href="{% url 'EditarProducto' producto.id  %}">Editar Producto</a>
-                                        <a class="btn boton_ver_mas" href="{% url 'EliminarProducto' producto.id  %}">Eliminar Producto</a> 
-                                    </div>
+                            </div>
+                            <div class="col-12" id="botonera" style="margin-top: 2em;" hidden>
+                                <p style="margin-bottom: 2em;">¿Eliminar este producto?</p>
+                                <div class="btn-group">
+                                    <a class="btn boton_ver_mas" href="{% url 'EliminarProducto' producto.id %}">Aceptar</a>
+                                    <a class="btn boton_ver_mas" id="cancelarEliminacion" onclick="ocultarBotoner()">Cancelar</a> 
                                 </div>
-                                {% endif %}
+                            </div>
+
+                            {% endif %}
                         </div>
                         </div>
                     </div>

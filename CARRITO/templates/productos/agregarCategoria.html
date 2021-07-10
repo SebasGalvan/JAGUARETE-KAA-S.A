@@ -8,8 +8,21 @@
 {% block content %} 
      <form action="{% url 'AgregarCategoria' %}" method="POST">
         {% csrf_token %}
-                <label for="">Descripcion</label>
-                <input type="text" name="descripcion">
-                <input type="submit" value="Agregar">
+
+   
+        <div class="formulario">
+            <div class="contenedor_form">
+               <div class="campos_forms">
+                    <label class="eqtiqueta_form">Descripcion</label>
+                    <input class="input_campo" type="text" name="descripcion" placeholder="Descripcion Categoria ">
+                </div>
+                <div class="campos_forms" style="margin-top: 1em;">
+                    <input class= "boton_ver_mas" type="submit" value="Agregar">
+                </div>
+            </div>
+        </div>
+
+             
+             
     </form>
 {%endblock%}
