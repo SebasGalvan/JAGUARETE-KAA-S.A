@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import formularioLogin, formularioRegistro
 from django.contrib.auth.models import User
+from CARRITO.models import Producto
 
 
 # Create your views here.
@@ -10,8 +11,7 @@ def registro(request):
     
     if request.POST:
         
-        
-        user =  request.POST['username']
+        user =  request.POST['usuario']
         password =  request.POST['password']
         nombre =  request.POST['nombre']
         apellido =  request.POST['apellido']
@@ -20,9 +20,18 @@ def registro(request):
         usuario  = User.objects.create_user(user, email, password)
         usuario.first_name = nombre
         usuario.last_name = apellido
-
-        usuario.save()
         
+        super = bool(request.POST['super'])
+        if super:
+            usuario.is_superuser = True
+            usuario.save()
+            ultimos = Producto.objects.all().order_by('-id')[:3]
+            for pr in ultimos:
+                pr.titulo =  pr.titulo[:43]
+                otros = Producto.objects.all().order_by('-id')[3:10]
+            return render(request,'home.html',{"ultimos":ultimos,"otros":otros})
+        
+        usuario.save()
         form = formularioLogin
         return render(request,'registration/login.html',{'form':form})
         
