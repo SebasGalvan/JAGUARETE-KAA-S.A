@@ -10,19 +10,20 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.inicio, name='Home'),
     path('buscar/', views.buscar, name='Buscar'),
-    path('contacto/', views.contacto, name='Contacto'),
-    path('acerca_de/', views.acerca_de, name='Aacerca de'),
     path('producto/', views.producto, name='Producto'),
     path('producto/<int:id>', views.productoEditar, name='EditarProducto'),
-    path('producto/<int:id>', views.productoEliminar, name='EliminarProducto'),
+    path('eliminarProducto/<int:id>', views.productoEliminar, name='EliminarProducto'),
+    path('producto/<int:id>/', views.verProducto, name='verProducto'), 
+    path('agregarProducto/', views.agregarProducto, name='Agregar'), 
+    path('contacto/', views.contacto, name='Contacto'),
+    path('acerca_de/', views.acerca_de, name='Aacerca de'),
     path('carrito/', views.carrito, name='Carrito'),
     path('carrito/<int:id>', views.agregarCarrito, name='AgregarCarrito'),
     path('eliminarCarrito/<int:id>', views.eliminarDelCarrito, name='EliminarDelCarrito'),
-    path('producto/<int:id>/', views.verProducto, name='verProducto'), 
     path('USUARIO/', include('USUARIOS.urls')), 
-    path('agregarProducto/', views.agregarProducto, name='Agregar'), 
     path('agregarCategoria/', views.agregarCategoria, name='AgregarCategoria'), 
     path('categoria/<int:id>', views.productoCategoria, name='Categoria'),
+    
 ]
 
 

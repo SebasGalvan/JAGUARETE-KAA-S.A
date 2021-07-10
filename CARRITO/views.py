@@ -48,7 +48,7 @@ def contacto(request):
         mi_formulario = formulario_contacto(request.POST)
         if mi_formulario.is_valid():
             informacion_formulario =  mi_formulario.cleaned_data
-            send_mail(informacion_formulario['asunto'],informacion_formulario['mensaje'],informacion_formulario.get('email',''),['sebastiangalvan.ar@gmail.com'],)
+            send_mail(informacion_formulario['asunto'],informacion_formulario['mensaje'],informacion_formulario.get('email',''),['miemail@gmail.com'],)
             return render(request,"contacto/gracias.html")
     mi_formulario =  formulario_contacto()
     return render(request,"contacto/contacto.html",{"formulario":mi_formulario})
@@ -64,25 +64,53 @@ def producto(request):
         producto.descripcion =  producto.descripcion[:60]
     return render(request,"productos/producto.html",{'productos':productos})
 
+
+
 @login_required(login_url='login')
 def productoEditar(request, id):
-    if request.method=="POST":
-        producto = producto = Producto.objects.get(pk = id)
-        titulo = request.POST["inputtitulo"]
-        imagen = request.POST["inputimagen"]
-        decripcion = request.POST["inputdescripcion"]
-        precio = request.POST["inputprecio"]
-        categoria_id = request.POST["categoria_id"] 
+    
+    if request.method=="POST": 
+
+        prod = Producto.objects.get(pk=id)
         
-        Producto.objects.get(pk = id).update(titulo = titulo, imagenProducto = imagen, decripcion=decripcion, precio = precio, categoria_id=categoria_id)
+        categoria = int(request.POST['categoria_id'])
+        
+        titulo = request.POST['titulo']
+        if titulo:
+            prod.titulo = titulo   
+            
+        descripcion  = request.POST['descripcion']
+        if descripcion:
+            prod.descripcion = descripcion
+        
+        precio = request.POST['precio']
+        if precio:
+            prod.precio = (precio)
+        
+        if request.FILES.get('imagenProducto'):
+            prod.imagenProducto.delete()
+            prod.imagenProducto = request.FILES.get('imagenProducto')
+        
+        if categoria:  
+            prod.categoria_id = categoria
+        
+        prod.save()
+        return render(request,'productos/verProducto.html',{'producto': prod})
               
     producto = Producto.objects.get(pk = id)
     categorias = Categoria.objects.all()
     form = ProductoForm(request.POST)
     return render (request,'productos/editar.html',{'form':form, 'producto':producto, 'categorias':categorias})
 
-def productoEliminar(request):
-    pass
+def productoEliminar(request, id):
+    Producto.objects.filter(pk=id).delete()
+    mensaje = "Producto eliminado."
+    productos =  Producto.objects.all()
+    for producto in productos:
+        producto.titulo =  producto.titulo[:43]
+        producto.descripcion =  producto.descripcion[:60]
+    return render (request, 'productos/producto.html',{'productos':productos, 'mensaje':mensaje})
+   
     
 
 
@@ -160,7 +188,8 @@ def agregarProducto(request):
 
              
     form = ProductoForm()
-    return render(request,'productos/agregarProducto.html',{'form':form})
+    categorias =  Categoria.objects.all()
+    return render(request,'productos/agregarProducto.html',{'form':form,'categorias':categorias})
 
 def agregarCategoria(request):
     
