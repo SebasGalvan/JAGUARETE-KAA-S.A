@@ -26,7 +26,6 @@
                     {% include 'nav.html' %}
                     <header>
                         <div id="bloque_login">
-                        <h3>Jaguarete KAA SA</h3>
                     </header>          
                     {% block content %}
 
@@ -35,6 +34,10 @@
         </div>
             {% include 'footer.html' %}
         </div>
+
+        <script src="{% static 'bootstrap/jquery/jquery.js'%}"></script>
+        <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'js/script.js'%}"></script>
 
     </body>
 </html>

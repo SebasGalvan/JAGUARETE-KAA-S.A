@@ -1,6 +1,8 @@
 {% extends "registration/layout.html" %}
 
 {% block content %}
+
+        {% load static %}
         <h2>Formulario de Registro</h2>
 
         <form method="POST" action="{% url 'Registro' %}">
@@ -11,44 +13,70 @@
 
           <div class="formulario">
             <div class="contenedor_form">
-
+              
               <div class="campos_forms">
-                <p class="eqtiqueta_form">Usuario</p>
-                <p class="input_campo">{{form.username}}</p>
+                <div class="row">
+                  <p class="eqtiqueta_form col-4">Usuario</p>
+                  <i class="col error" id="i_registro_usuario">Falta usuario</i>
+                </div>
+                <input class="input_campo" type="text" name="usuario" placeholder="Usuario" id="registro_usuario">
               </div>
               
               <div class="campos_forms">
-                <p class="eqtiqueta_form">Contraseña</p>
-                <p class="input_campo">{{form.password}}</p>
+                <div class="row">
+                  <p class="eqtiqueta_form col-4">Contraseña</p>
+                  <i hidden class="col error" id="i_registro_password">Falta contraseña</i>
+                </div>
+                <input class="input_campo" type="password" name="password" placeholder="Contraseña" id="registro_password">
               </div>
                
               <div class="campos_forms">
                 <p class="eqtiqueta_form">Verificar Contraseña</p>
-                <p class="input_campo">{{form.verificacion_password}}</p>
+                <i hidden id="i_verificacion_password">Contraseña no coincide</i>
+                <i hidden id="i_verificacion_password_falta">Falta Verificacion Contraseña</i>
+                <input class="input_campo" type="password" name="verificacion_password" placeholder="Verificacion Contraseña" id="registro_ver_password">
               </div>
 
-              <div class="campos_forms">
+              <div class="campos_forms"> 
                 <p class="eqtiqueta_form">Email</p>
-                <p class="input_campo">{{form.email}}</p>
+                <i hidden id="i_registro_email">Falta Email</i>
+                <input class="input_campo" type="email" name="email" placeholder="Email" id="registro_email">
               </div>
               <div class="campos_forms">
                 <p class="eqtiqueta_form">Nombre</p>
-                <p class="input_campo">{{form.nombre}}</p>
+                <i hidden id="i_registro_nombre">Falta nombre</i>
+                <input class="input_campo" type="text" name="nombre" placeholder="Nombre" id="registro_nombre">
               </div>
               <div class="campos_forms">
                 <p class="eqtiqueta_form">Apellido</p>
-                <p class="input_campo">{{form.apellido}}</p>
+                <i hidden id="i_registro_apellido">Falta Apellido</i>
+                <input class="input_campo" type="text" name="apellido" placeholder="Apellido" id="registro_apellido">
               </div>
               
-              <div class="campos_forms">
-                <input class="boton_enviar" type="submit" value="Registrar"/>
-                <input type="hidden" name="next" value="{{ next }}" />
-              </div>
+
+              {% if request.user.is_superuser %}
+
+                <div class="campos_forms" style="margin-top: 2em;">
+                  <input type="hidden" name="super" value="True" />
+                  <input class="boton_enviar" type="submit" value="Registrar SU" disabled  id="btn_registrar"/>
+                </div>
+
+              {% else %}
+
+                  <div class="campos_forms" style="margin-top: 2em;">
+                    <input class="boton_enviar" type="submit" value="Registrar" disabled  id="btn_registrar"/>
+                  </div>
+
+              {% endif %}
+
+
           </div>
           </div>
 
            
         </form>
+        
+        <script src="{% static 'js/registro.js'%}"></script>
         
 {% endblock %}
 
