@@ -8,6 +8,6 @@ python -m pip install Pillow
 Usuario Administrador: admin
 Contraseña: root
 
-Usuario no administrador: martin
-Contraseña: martin123
+Usuario no administrador: juan
+Contraseña: juan123
 
