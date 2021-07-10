@@ -1,5 +1,6 @@
-function mostrarSeleccon(){
 
+
+function mostrarSelecion(){
     val = document.querySelector('#id__categoria').value
     val_num = Number(val)
     console.log(val_num);
@@ -17,4 +18,14 @@ function getURL(url) {
     ruta = `${arr[0]}//${arr[2]}/categoria/`
     return ruta
     }     
-            
+
+function eliminarProducto(){
+    botonera = document.querySelector('#botonera');
+    botonera.hidden = false
+
+}
+
+function ocultarBotoner(){
+    botonera = document.querySelector('#botonera');
+    botonera.hidden = true
+}

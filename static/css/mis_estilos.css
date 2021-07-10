@@ -1,11 +1,11 @@
-/* CSS HEX
+
 colore {
     space-cadet: #22223b;
     independence: #4a4e69;
     heliotrope-gray: #9a8c98;
     silver-pink: #c9ada7;
     isabelline: #f2e9e4;
-} */
+} 
 
 
 .contenedor{
@@ -34,14 +34,12 @@ li{
 }
 
 #logo_jk {
-    font-family: 'Otomanopee One', sans-serif;
     color: #f2e9e4;
     font-size: 1.3em;
 
 } 
 
 #marca {
-    font-family: 'Otomanopee One', sans-serif;
     color: #f2e9e4;
     font-size: .7em;
     
@@ -81,11 +79,6 @@ nav{
     align-items: center;
 }
 
-#busqueda_caja{
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-}
 
 .info_producto{
     display: flex;
@@ -255,6 +248,7 @@ option :hover{
 .contenedor_form{
     padding: 1em;
     border: #22223b solid;
+    min-width: 60%;
 }
 .campos_forms{
     display: flex;
@@ -277,6 +271,8 @@ option :hover{
     padding: .7em;
     border: none;
     width: auto;
+    text-decoration: none;
+    text-align: center;
 
 }
 
@@ -396,4 +392,24 @@ option :hover{
 .contenedor_acerca{
     padding: 4em;
     text-align: justify;
+}
+
+.link_agregar{
+    background-color: #c9ada7;
+    color: #22223b;
+    padding: 0.3;
+    text-decoration: none;
+    margin-top: 1em;
+
+}
+.link_agregar:hover{
+    background-color: #f2e9e4;
+}
+
+
+
+.error{
+    font-family: 'Antic Slab', serif;
+    color: darkred;
+    justify-content: center;
 }
