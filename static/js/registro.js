@@ -11,6 +11,8 @@ const boton_registro = document.querySelector('#btn_registrar');
 inicio()
 function inicio(){
 
+    inputUsuario.focus()
+
     inputUsuario.addEventListener('blur',verificar);
     inputPassword.addEventListener('blur',verificar);
     inputVer_password.addEventListener('blur',verificar);
@@ -64,7 +66,7 @@ function verificarUsuario(){
         if(usuario == ""){   
             i_registro.hidden= false
             setInterval(() => {
-                i_registro.hidden= true
+                i_registro.hidden = true
             }, 5000);
             return false
         }
