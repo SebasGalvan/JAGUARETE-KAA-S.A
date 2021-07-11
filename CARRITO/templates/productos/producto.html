@@ -7,6 +7,8 @@
 
 {% block content %} 
 
+<div class="container">
+            {% load static %}
             {% if mensaje%}
                 <div id="mensaje">{{mensaje}}</div>
                 <script>
@@ -17,20 +19,26 @@
                     }, 7000);
                 </script>
             {% endif %}
-            <table>
-                <tr>
-                    <th class="head_tabla">Titulo</th>
-                    <th class="head_tabla">Descripcion</th>
-                    <th class="head_tabla">Precio</th>
-                    <th class="head_tabla">  </th>
-                </tr>
-                {% for producto in productos %}
-                            <tr class="row_tabla">
-                                <td class="col_tabla">{{ producto.titulo}}</td>
-                                <td class="col_tabla descripcion">{{producto.descripcion}}</td>
-                                <td class="col_tabla">{{producto.precio}}</td>
-                                <td class="col_tabla"><a class=" link_producto"href="{% url 'verProducto' producto.id %}">Ver mas</a></td>
-                            </tr>
-                {% endfor %}
-            </table>
+           
+
+            <div class="row">
+                <div class="card-group">
+                        {% for pr in productos %}
+                        <div class="col-lg-4 col-sm-6 col-md-6 col-xs-12 d-flex align-items-stretch"> 
+                            <div class="card">
+                                <a href="{% url 'verProducto' pr.id %}"><img src="{{ pr.imagenProducto.url }}" class="card-img-top" alt="Imagen producto" height="200px" width="auto" ></a>
+                                <div class="card-body">
+                                    <h5 class="card-title"><a class='link_pr_carro' href="{% url 'verProducto' pr.id %}">{{pr.titulo}}</a></h5>
+                                    <p class="card-text text-muted">{{pr.descripcion}} ...</p>
+                                    <p class="card-text">${{pr.precio}}</p>
+                                    <a class="btn btn_abajo boton_ver_mas" href="{% url 'verProducto' pr.id %}">Ver mas</a> 
+                                </div>
+                            </div>  
+                           </div>      
+                        {%endfor%}
+                </div>
+            </div>
+
+</div>
 {%endblock%}
+

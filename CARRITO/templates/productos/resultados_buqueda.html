@@ -7,7 +7,7 @@
 
 {% block content %} 
 
-    <div class="contenedor_productos">
+    <div class="contenedor_productos container">
 
     {% if mensaje %}
 
@@ -17,44 +17,47 @@
     {% elif productos_encontrados %}
         <p>Esta buscando : {{query}}</p>
             <p>Productos encontrados: {{productos_encontrados|length}} productos</p>
-
-                            {% for pr in productos_encontrados %}
-
-                            <div class="contenedor_de_productos">
-                                <div class="informacion">
-                                    <div class="titulo_producto">{{pr.titulo}}</div>
-                                     <div class="info_de_producto">{{pr.descripcion}}</div>
-                                    <div class="info_de_producto">{{pr.precio}}</div>
-                                    <div class="info_de_producto">{{pr.categoria}}</div>
+                            <div class="row">
+                                <div class="card-group">
+                                        {% for pr in productos_encontrados %}
+                                        <div class="col-lg-4 col-sm-6 col-md-6 col-xs-12 d-flex align-items-stretch"> 
+                                            <div class="card">
+                                                <a href="{% url 'verProducto' pr.id %}"><img src="{{ pr.imagenProducto.url }}" class="card-img-top" alt="Imagen producto" height="200px" width="auto" ></a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><a class='link_pr_carro' href="{% url 'verProducto' pr.id %}">{{pr.titulo}}</a></h5>
+                                                    <p class="card-text text-muted">{{pr.descripcion}} ...</p>
+                                                    <p class="card-text text-muted">{{pr.categoria}}</p>
+                                                    <p class="card-text">${{pr.precio}}</p>
+                                                    <a class="btn btn_abajo boton_ver_mas" href="{% url 'verProducto' pr.id %}">Ver mas</a> 
+                                                </div>
+                                            </div>  
+                                           </div>      
+                                        {%endfor%}
                                 </div>
-                                <div class="col_imagen">
-                                         <img class="imagen_producto" src="{{ pr.imagenProducto.url }}" alt="" height="200px" width="auto" >
-                                        <a class="link_producto" href="{% url 'verProducto' pr.id %}">Ver mas</a>
-                                </div>
-                           
-                        </div>
-
-                            {%endfor%} 
-        {%elif productos%}
+                            </div>
+    {%elif productos%}
 
                 <div class="categoria_info">{{categoria}}</div>
 
                   
-                    {% for pr in productos%}
-                        <div class="contenedor_de_productos">
-                        <div class="informacion">
-                            <div class="titulo_producto">{{pr.titulo}}</div>
-                             <div class="info_de_producto">{{pr.descripcion}}</div>
-                            <div class="info_de_producto">{{pr.precio}}</div>
-                            <div class="info_de_producto">{{pr.categoria}}</div>
-                        </div>
-                        <div class="col_imagen">
-                                 <img class="imagen_producto" src="{{ pr.imagenProducto.url }}" alt="" height="200px" width="auto" >
-                                <a class="link_producto" href="{% url 'verProducto' pr.id %}">Ver mas</a>
-                        </div>
-                   
+                <div class="row">
+                    <div class="card-group">
+                            {% for pr in productos%}
+                            <div class="col-lg-4 col-sm-6 col-md-6 col-xs-12 d-flex align-items-stretch"> 
+                                <div class="card">
+                                    <a href="{% url 'verProducto' pr.id %}"><img src="{{ pr.imagenProducto.url }}" class="card-img-top" alt="Imagen producto" height="200px" width="auto" ></a>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a class='link_pr_carro' href="{% url 'verProducto' pr.id %}">{{pr.titulo}}</a></h5>
+                                        <p class="card-text text-muted">{{pr.descripcion}} ...</p>
+                                        <p class="card-text text-muted">{{pr.categoria}}</p>
+                                        <p class="card-text">${{pr.precio}}</p>
+                                        <a class="btn btn_abajo boton_ver_mas" href="{% url 'verProducto' pr.id %}">Ver mas</a> 
+                                    </div>
+                                </div>  
+                               </div>      
+                            {%endfor%}
                     </div>
-        {%endfor%}
+                </div>
 
 
         {% else %}

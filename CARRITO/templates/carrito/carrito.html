@@ -4,42 +4,44 @@
     Carrito
 {%endblock%}
 
-{% block content %} 
+{% block content %}
+
+    {% load static %}
+
+    <div class="container">
    
     {% if carrito %}
         {%if mensaje %}
             {{mensaje}}
         {% endif %}
-        <table>
-            <tr class="row_tabla">
-                <th class="head_tabla">Titulo</th>
-                <th class="head_tabla">Precio</th>
-                <th class="head_tabla">Cantidad</th>
-                <th class="head_tabla">-</th>
-            </tr>
 
-        {% for producto in carrito %}
-
-
-            <tr class="row_tabla">
-                <td class="col_tabla titulo">{{producto.productos.titulo}}</td>
-                <td class="col_tabla col_items precio">{{producto.productos.precio}}</td>
-                <td class="col_tabla col_items cantidad">{{producto.cantidad}}</td>
-                <td class="col_tabla col_items eliminar link_producto"><a class="link_producto" href="{% url 'EliminarDelCarrito' producto.productos.id %}">Eliminar</a></td>
-            </tr>
-            {% endfor %}
-
-
-
-        </table>
+                {% for pr in carrito %}
+                        <div class="contenedor_de_productos row">
+                            <div class=" col informacion col-sm-12 col-xs-12 col-md-6 col-lg-6">
+                                <div class="titulo_producto"><a class='link_pr_carro' href="{% url 'verProducto' pr.productos.id %}">{{pr.productos.titulo}}</a></div>
+                                <div class="info_de_producto">Precio: ${{pr.productos.precio}}</div>
+                            </div>
+                            <div class="col col_imagen col col-sm-12 col-xs-12 col-md-3 col-lg-3">
+                                    <img class="imagen_producto" src="{{ pr.productos.imagenProducto.url }}" alt="" height="150px" width="auto" >
+                            </div>
+                            <div class="col col_imagen col col-sm-12 col-xs-12 col-md-3 col-lg-3">
+                                <div class="info_de_producto">Cantidad: {{pr.cantidad}}</div>
+                                <a class="link_producto" href="{% url 'EliminarDelCarrito' pr.productos.id %}">Eliminar</a>
+                            </div>
+                    </div>
+                {%endfor%}
 
             <div><span>Total : $</span>{{total}}</div>
-            <div><a href="">Finalizar compra</a></div>
+
+            <div class="row">
+                <div class="col justify-content-center" style="margin-top: 2em;"><a class="link_producto " href="">Finalizar compra</a></div>
+                <div class="col justify-content-center" style="margin-top: 2em;"><a class="link_producto " href="{% url 'vaciarCarrito' %}">Vaciar carrito</a></div>
+            </div>
+
     {% else %}
-      {{vacio}}
-    {% endif %}
-    
-    
+            {{vacio}}
+    {% endif %}       
+    </div>
     
   
 

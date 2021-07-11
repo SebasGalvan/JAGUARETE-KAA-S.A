@@ -7,19 +7,21 @@
 
 {% block content %}  
 
-    <div id="slogan"> Encuentra la inspiración, las ideas y los productos ideales para cada rincón de tu vida en el hogar. Tenemos todo lo que necesitas para hacer que el espacio en el que vives sea auténticamente tuyo</div>
+    {% load static %}
+
+    <div id="slogan"> Encuentra la inspiración, las ideas y los productos ideales para cada rincón de tu vida en el hogar. Tenemos todo lo que necesitas para hacer que el espacio en el que vives sea auténticamente tuyo.</div>
 
     <div class="row">
         <div class="card-group">
                 {% for pr in ultimos %}
                 <div class="col-lg-4 col-sm-12 col-md-6 col-xs-12 d-flex align-items-stretch"> 
                     <div class="card">
-                        <img src="{{ pr.imagenProducto.url }}" class="card-img-top" alt="Imagen producto" height="200px" width="auto" >
+                        <a href="{% url 'verProducto' pr.id %}"><img src="{{ pr.imagenProducto.url }}" class="card-img-top" alt="Imagen producto" height="200px" width="auto" ></a>
                         <div class="card-body">
-                            <h5 class="card-title">{{pr.titulo}}</h5>
-                            <p class="card-text text-muted">{{pr.descripcion}}</p>
+                            <h5 class="card-title"><a class='link_pr_carro' href="{% url 'verProducto' pr.id %}">{{pr.titulo}}</a></h5>
+                            <p class="card-text text-muted">{{pr.descripcion}} ...</p>
                             <p class="card-text">${{pr.precio}}</p>
-                            <a class="btn btn_abajo boton_ver_mas" href="{% url 'verProducto' pr.id %}">Ver mas</a>
+                            <a class="btn btn_abajo boton_ver_mas" href="{% url 'verProducto' pr.id %}">Ver mas</a> 
                         </div>
                     </div>  
                    </div>      
@@ -34,7 +36,7 @@
                         {% for pr in otros %}
                         <div class="row fila_producto">
                             <div class="col-lg-9 col-sm-12 col-xs-12">
-                                <h5 class="card-title">{{pr.titulo}}</h5>
+                                <a class='link_pr_carro' href="{% url 'verProducto' pr.id %}"><h5 class="card-title">{{pr.titulo}}</h5></a>
                                 <p class="card-text">{{pr.descripcion}}.</p>
                                 <hr>
                             </div>

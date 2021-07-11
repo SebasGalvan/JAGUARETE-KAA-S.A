@@ -10,6 +10,12 @@
     {% if formulario.errors %}
     <p style="color:red;">Revisa este campo</p>
     {%endif%}
+
+    <div class="row">
+    <div class="col-lg-4 col-sm-6 col-md-6 col-xs-12 d-flex align-items-stretch">
+
+    </div>
+
     <form action="" method="POST">
 
             {% csrf_token %}
@@ -18,15 +24,15 @@
                 <div class="contenedor_form">
                   <div class="campos_forms">
                       <p class="eqtiqueta_form">Asunto</p>
-                      <input class="input_campo" type="text" name="asunto" placeholder="Asunto">                  
+                      <input  type="text" name="asunto" placeholder="Asunto">                  
                     </div>
                     <div class="campos_forms">
                       <p class="eqtiqueta_form">Email</p>
-                      <input class="input_campo" type="email" name="email" placeholder="Email">
+                      <input  type="email" name="email" placeholder="Email">
                     </div>
                     <div class="campos_forms">
                       <p class="eqtiqueta_form">Mensaje</p>
-                      <textarea class="input_campo" name="mensaje" id="mensaje" cols="50" rows="5" placeholder="Mensaje"></textarea>
+                      <textarea  name="mensaje" id="mensaje"  rows="5" placeholder="Mensaje"></textarea>
                     </div>
                     
                     <div class="campos_forms" style="margin-top: 2em;">
@@ -37,7 +43,8 @@
 
 
         </form>
-
+      </div>
+      </div>
 {%endblock%}
 
   
