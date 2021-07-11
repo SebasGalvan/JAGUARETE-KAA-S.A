@@ -239,16 +239,20 @@ option :hover{
     padding: 0.4em;
 }
 .formulario{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2em;
+    padding: 2em; */
 }
 .contenedor_form{
-    padding: 1em;
-    border: #22223b solid;
-    min-width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 2em;
+    border: #888 dotted;
+
 }
 .campos_forms{
     display: flex;
@@ -299,7 +303,7 @@ option :hover{
     color: #c9ada7;
 }
 .row_tabla{
-    height: 2em;
+    min-height: 2em;
 }
 
 .row_tabla:hover{
@@ -313,8 +317,8 @@ option :hover{
     background-color: #c9ada7;
     color: #f2e9e4;
     width: 6em;
-    margin-top: .3em;
-    border-radius: 5em;
+    margin-top: .1em;
+    border-radius: 2em;
     text-align: center;
 }
 
@@ -325,6 +329,7 @@ option :hover{
 
 .descripcion{
     padding-right: 3em;
+
 }
 
 .etiqueta{
@@ -333,28 +338,29 @@ option :hover{
 }
 
 
+
+
 .contenedor_de_productos{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+
     margin-bottom: 2em;
     border: #22223b dotted;
     padding-bottom: 0.5em;
+    align-items: center;
 }
+
 .informacion{
-    min-width: 70%;
     padding-left: 2em;
 }
 
 .col_imagen{
     display: flex;
     flex-direction: column;
-    /* max-width: 20%; */
-    justify-content: center;
     align-items: center;
+    justify-content: space-around;
     padding-right: 2em;
-}
+}  
+
+
 .titulo_producto{
     font-size: 2em;
 }
@@ -380,13 +386,10 @@ option :hover{
 }
 
 
-.col_tabla .titulo{
-    padding-right: 4em;
+.titulo{
+    min-width: 60%;
 }
 
-.col_items{
-    text-align: center;
-}
 
 
 .contenedor_acerca{
@@ -412,4 +415,33 @@ option :hover{
     font-family: 'Antic Slab', serif;
     color: darkred;
     justify-content: center;
+}
+
+
+.link_pr_carro{
+    color: #22223b;
+    text-decoration: none;
+}
+.link_pr_carro:hover{
+    color: #c9ada7;
+}
+.link_verMas{
+    background-color: #c9ada7;
+    color: #f2e9e4;
+    text-decoration: none;
+    padding: .3em;
+    border-radius: 5em;
+}
+.link_verMas:hover{
+    background-color: #f2e9e4;
+    color: #4a4e69;
+}
+
+.contenedorProductos{
+
+    border: #9a8c98 dotted;
+    margin-bottom: 1em;
+    align-items: center;
+    padding-top: 1em;
+    padding-bottom:1em ;
 }
