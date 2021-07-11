@@ -19,6 +19,7 @@ urlpatterns = [
     path('acerca_de/', views.acerca_de, name='Aacerca de'),
     path('carrito/', views.carrito, name='Carrito'),
     path('carrito/<int:id>', views.agregarCarrito, name='AgregarCarrito'),
+    path('vaciarCarrito/', views.vaciarCarrito, name='vaciarCarrito'),
     path('eliminarCarrito/<int:id>', views.eliminarDelCarrito, name='EliminarDelCarrito'),
     path('USUARIO/', include('USUARIOS.urls')), 
     path('agregarCategoria/', views.agregarCategoria, name='AgregarCategoria'), 

@@ -14,9 +14,9 @@ class Categoria(models.Model):
     
     
 class Producto(models.Model):
-    titulo =  models.CharField(max_length=100)
+    titulo =  models.CharField(max_length=200)
     imagenProducto =  models.ImageField(upload_to='productos',blank = True, null = True)
-    descripcion = models.CharField(max_length=100)
+    descripcion = models.CharField(max_length=254)
     precio =  models.FloatField()
     categoria = models.ForeignKey(Categoria,on_delete= models.CASCADE, null=False)
     created =  models.DateTimeField(auto_now_add=True)

@@ -16,6 +16,7 @@ def inicio(request):
     ultimos = Producto.objects.all().order_by('-id')[:3]
     for pr in ultimos:
         pr.titulo =  pr.titulo[:43]
+        pr.descripcion =  pr.descripcion[:70]
     otros = Producto.objects.all().order_by('-id')[3:10]
     return render(request,'home.html',{"ultimos":ultimos,"otros":otros})
 
@@ -122,7 +123,8 @@ def carrito(request):
     
     user = request.user
     id_user =  user.id
-    productos =  Carrito.objects.filter(usuario_id = id_user)
+    productos =  Carrito.objects.filter(usuario_id = id_user).select_related('productos')
+    
     total = 0
     for p in productos:
         producto = Producto.objects.get(pk = p.productos_id)
@@ -212,3 +214,12 @@ def productoCategoria(request, id):
         else:
             return render(request,'productos/resultados_buqueda.html',{'mensaje': 'No hay productos con esta categoria','categoria':categoria.descripcion})
         
+        
+        
+def vaciarCarrito(request):
+    user = request.user
+    id_user = user.id
+    Carrito.objects.filter(usuario_id = id_user).delete()
+    
+    productos =  Carrito.objects.filter(usuario_id = user.id)
+    return render(request,"carrito/carrito.html", {'carrito': productos,'mensaje': 'No tiene productos en su carrito','vacio':'Su carrito esta vacio'}) 
