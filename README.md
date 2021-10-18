@@ -1,9 +1,8 @@
-"# JAGUARETE-KAA-S.A" 
+TIENEDA DE DECORACION
 
 Debe tener instalado Pillow en su entorno:
 
 python -m pip install Pillow
-
 
 Usuario Administrador: admin
 Contraseña: root
