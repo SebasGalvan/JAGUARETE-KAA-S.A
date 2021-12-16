@@ -1,6 +1,6 @@
 TIENEDA DE DECORACION
 
-Debe tener instalado Pillow en su entorno:
+Debe tener instalado Pillow:
 
 python -m pip install Pillow
 
