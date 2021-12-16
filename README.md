@@ -1,4 +1,4 @@
-TIENEDA DE DECORACION
+Muebleria
 
 Debe tener instalado Pillow:
 
