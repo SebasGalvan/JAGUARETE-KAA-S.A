@@ -1,5 +1,5 @@
 """
-ASGI config for JAGUARETE_KAA_SA project.
+ASGI config for TIENDA project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
